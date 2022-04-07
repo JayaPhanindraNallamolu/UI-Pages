@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+}
+
+.parent {
+  width: 800px;
+  height: 500px;
+  margin: auto;
+  background-color: aquamarine;
+}
+
+.lefthalf {
+  width: 400px;
+  height: 500px;
+  float: left;
+  background-image: url(/Images/image1.png);
+  background-size: cover;
+  background-color: blueviolet;
+}
+
+.righthalf {
+  width: 400px;
+  height: 500px;
+  float: right;
+  background-color: white;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  /* margin: 50px; */
+  font-family: "Roboto", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+.login {
+  width: 300px;
+  height: 350px;
+  margin: 50px auto;
+  background-color: white;
+}
+
+.top {
+  width: 300px;
+  height: 70px;
+  padding-top: 20px;
+  font-family: "Roboto", sans-serif;
+  background-color: white;
+}
+
+.middle {
+  width: 300px;
+  height: 175px;
+  background-color: white;
+}
+
+.email {
+  width: 291px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 6px 0px 6px 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.password {
+  width: 291px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  padding: 6px 0px 6px 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+.checkbox {
+  margin-right: 6px;
+  float: left;
+  font-family: "Roboto", sans-serif;
+}
+
+.forgot {
+  float: right;
+  font-family: "Roboto", sans-serif;
+}
+
+.bottom {
+  width: 300px;
+  height: 105px;
+  background-color: white;
+}
+
+.button {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 0px;
+  font-family: "Roboto", sans-serif;
+  background-color: #04c35c;
+}
+
+.button1 {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  border: 0px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  background-color: #2d3748;
+}
