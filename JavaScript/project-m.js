@@ -45,8 +45,16 @@ function validatesignin() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
-        console.log(Object.values(data)[0]);
+        if (data.msg) {
+          console.log(data.msg);
+          passwordtext.innerText = "";
+          passwordtext.style.color = "red";
+          passwordtext.innerText = data.msg;
+        } else {
+          console.log("Success:", data);
+          console.log("Access token : ", Object.values(data)[0]);
+          console.log("Refresh token : ", Object.values(data)[5]);
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
