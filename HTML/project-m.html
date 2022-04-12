@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Bootstrap/tablebootstrap.css">
+    <link rel="stylesheet" href="/Icons/fontawesome/css/all.css">
     <link rel="stylesheet" href="/CSS/project-m.css">
     <script src="/JavaScript/project-m.js"></script>
     <script src="/JavaScript/regex.js"></script>
@@ -37,6 +38,7 @@
                     <input type="text" placeholder="Email" id="projectmemail" class="px-1 py-2 mb-2">
                     <small id="emailtext"></small>
                     <input type="password" placeholder="Password" id="projectmpassword" class="px-1 py-2 my-3">
+                    <i class="fa-solid fa-eye-slash" id="togglepassword" onclick="togglepassword()"></i>
                     <small id="passwordtext"></small>
                     <button type="button" class="btn btn-block mt-3 signinbutton" id="credentialsubmit"
                         onclick="validatesignin()">SIGN
