@@ -1,0 +1,25 @@
+.cardview{
+    position: relative;
+}
+
+.para{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 20%;
+    padding-left: 2px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.ratingstar{
+    font-size: 10px;
+    color: green;
+}
+.rating{
+    /* border: 1px solid blue; */
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.backgroundview{
+    background-color: #c3c6d1;
+}
