@@ -1,0 +1,14 @@
+.horizontal{
+    width: 100%;
+    /* height: 100%; */
+}
+.horizontaltemplate{
+    background-color: #3f50b5;
+}
+.signout{
+    font-size: 34px !important;
+    color: #ffffff;
+}
+.signout:hover{
+    cursor: pointer;
+}

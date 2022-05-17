@@ -1,0 +1,107 @@
+.ag-header-cell-label{
+    font-size : 15px;
+
+}
+.ag-cell{
+    display: flex;
+    align-items: center;
+}
+#filter-text-box{
+    border: 1px solid #d3d3d3;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none; 
+    text-indent: 18px;
+}
+#filter-text-box:focus{
+    border: 1px solid #003151;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+.actionbutton{
+    width: 40px;
+    border: 1px solid #d3d3d3;
+    border-right: none;
+}
+.icons{
+    font-size: 20px;
+}
+.lastbutton{
+    border-right: 1px solid #d3d3d3;
+}
+.actiondiv{
+    width: auto;
+}
+.recruit-element{
+    background-color: #003151;
+    padding: 3px 9px 3px 9px;
+    border-radius: 15px;
+    color: #ffffff;
+}
+.rag-element{
+    background-color: #003151;
+    padding: 3px 9px 3px 9px;
+    border-radius: 15px;
+    color: #ffffff;
+}
+.status-element{
+    background-color: #FFCC00;
+    padding: 3px 9px 3px 9px;
+    border-radius: 15px;
+    /* color: #ffffff; */
+}
+
+.searchdiv{
+    position: relative;
+    /* height: 50px; */
+}
+.searchicon{
+    position: absolute;
+    right: 180px;
+    bottom: 5px;
+}
+.rows-per-page{
+    position: absolute;
+    left: 20px;
+}
+.joblable{
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0px 5px 5px #d3d3d3;
+}
+.jobimage{
+    width: 50px;
+    padding: 2px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    /* position: absolute;
+    left: 2%; */
+}
+.jobheading{
+    color: #5484ca;
+    /* position: inherit;
+    left: 5%; */
+}
+.jobbutton{
+    border: none;
+    outline: none;
+    background: none;
+}
+.adddiv{
+height: 60px;
+width: 60px;
+}
+.adddiv:hover{
+    background-color: #d3d3d3;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.table_search{
+    background-color: #ffffff;
+}
+.plusicon{
+    font-size: 25px;
+}
