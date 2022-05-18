@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-alpine.css">
+    <link rel="stylesheet" href="/Bootstrap/tablebootstrap.css">
+    <link rel="stylesheet" href="/Icons/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/CSS/aggridtable.css">
+    <script src="/JavaScript/aggridtable.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <div class="d-flex align-items-center justify-content-between p-2 joblable">
+            <div class="d-flex align-items-center">
+                <img src="/Images/jobs.png" class="jobimage ml-2">
+                <h3 class="jobheading ml-2 mb-0">Jobs</h3>
+            </div>
+            <!-- <div class="d-flex justify-content-center align-items-center adddiv">
+                <button type="button" class="rounded-circle jobbutton"><i class="fa-solid fa-plus"></i></button>
+            </div> -->
+
+            <button type="button" class="jobbutton rounded-circle p-0" onclick="loading()">
+                <div class="d-flex justify-content-center align-items-center adddiv">
+                    <i class="fa-solid fa-plus plusicon"></i>
+                </div>
+            </button>
+        </div>
+
+        <div class="mx-3 table_search mt-4">
+            <div class="d-flex flex-row justify-content-end pt-4 px-2 mb-2 searchdiv">
+                <div class="rows-per-page">
+
+                    <label for="">Rows per Page :</label>
+
+                    <select onchange="onPageSizeChanged()" id="page-size">
+
+                        <option value="5">5</option>
+
+                        <option value="10" selected>10</option>
+
+                        <option value="25">25</option>
+
+                        <option value="50">50</option>
+
+                        <option value="75">75</option>
+
+                        <option value="100">100</option>
+
+                    </select>
+
+                </div>
+
+                <i class="fa-solid fa-magnifying-glass searchicon"></i>
+                <input type="text" id="filter-text-box" placeholder="Search..." oninput="onFilterTextBoxChanged()" />
+            </div>
+
+            <div id="myGrid" style="height: 100vh;" class="ag-theme-alpine"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" charset="utf-8">
+        // specify the columns
+        const columnDefs = [
+            {
+                headerName: "Title", field: "title", sortable: true, filter: true, cellStyle: { color: "#007BFF" }, resizable: true, wrapText: true, autoHeight: true, lockPosition: true
+            },
+            { headerName: "Description", field: "description", sortable: true, filter: true, pinned: null, resizable: true, wrapText: true, autoHeight: true },
+            { headerName: "Technologies", field: "technologies", sortable: true, filter: true, resizable: true, wrapText: true, autoHeight: true },
+            {
+                headerName: "Recruiters", field: "recruiters", filter: true, resizable: true, wrapText: true, autoHeight: true,
+                cellRenderer: recruitRenderer
+                // valueGetter: params => {
+                //     // console.log("PARAMS", params.data.recruiters);
+                //     return params.data.recruiters.length > 0 ? "S" : "";
+                // }
+            },
+            {
+                headerName: "Expired in", field: "expiry_date", sortable: true, filter: true, resizable: true, wrapText: true, autoHeight: true, cellStyle: { border: "2px" },
+                cellRenderer: ragRenderer,
+                // valueGetter: params => {
+                //     const date1 = new Date();
+                //     // console.log(date1);
+                //     const date2 = new Date(params.data.expiry_date);
+                //     const diffTime = Math.abs(date1 - date2);
+                //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                //     // console.log(diffDays + " days");
+                //     return diffDays + " Days";
+                // }
+            },
+            {
+                headerName: "Joining Date", field: "joining_date", sortable: true, filter: true, resizable: true, wrapText: true, autoHeight: true, cellStyle: { color: "#3f51b5" }
+            },
+            { headerName: "Status", field: "status", sortable: true, filter: true, resizable: true, wrapText: true, autoHeight: true, cellRenderer: statusRenderer },
+
+            { headerName: "Position", field: "hired_positions", sortable: true, filter: true, resizable: true, wrapText: true, autoHeight: true, cellRenderer: positionRenderer, cellStyle: { color: "#3f51b5", fontWeight: "bold" }, },
+
+            {
+                headerName: "Actions", resizable: true, autoHeight: true, cellStyle: { width: "auto" }, cellRenderer: function (params) {
+                    const id = params.data.id;
+                    const views = `<div class = "actiondiv"><button type="button" id=${id} onclick="viewjd(${id})" class="mt-1 mb-1 actionbutton"><i class="fa-solid fa-file-lines icons"></i></button><button type="button" id=${id} onclick="editjd(${id})" class="mt-1 mb-1 actionbutton"><i class="fa-solid fa-pen-to-square"></i></button><button type="button" class="mt-1 mb-1 actionbutton"><i class="fa-solid fa-people-group icons"></i></button><button type="button" class="mt-1 mb-1 actionbutton"><i class="fa-solid fa-pencil icons"></i></button><button type="button" class="mt-1 mb-1 actionbutton lastbutton"><i class="fa-solid fa-hand icons"></i></button></div>`;
+                    return views;
+                }
+            }
+        ];
+
+        // let the grid know which columns to use
+        const gridOptions = {
+            columnDefs: columnDefs,
+            pagination: true,
+            rowSelection: 'single',
+            filter: 'agTextColumnFilter',
+            filter: 'agNumberColumnFilter',
+        };
+
+        // lookup the container we want the Grid to use
+        const eGridDiv = document.querySelector('#myGrid');
+
+        // create the grid passing in the div to use together with the columns & data we want to use
+        new agGrid.Grid(eGridDiv, gridOptions);
+
+        function onPageSizeChanged() {
+
+            var value = document.getElementById("page-size").value;
+
+            gridOptions.api.paginationSetPageSize(Number(value));
+
+        }
+
+        function recruitRenderer(params) {
+            const recruit = params.data.recruiters.length > 0 ? "S" : '';
+            if (recruit == "S") {
+                return '<span class = "recruit-element">' + recruit + '</span>';
+            }
+            else {
+                return '<span>' + recruit + '</span>';
+            }
+        }
+
+        function ragRenderer(params) {
+            const date1 = new Date();
+            const date2 = new Date(params.data.expiry_date);
+            const diffTime = Math.abs(date1 - date2);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            // const result = diffDays + " Days";
+            return '<span class = "rag-element">' + diffDays + " Days" + '</span>';
+        }
+
+        function statusRenderer(params) {
+            return '<span class="status-element">' + params.data.status + '</span>';
+        }
+
+        function positionRenderer(params) {
+            return (params.data.hired_positions + "/" + params.data.total_requirement);
+        }
+
+
+        // function autoSizeAll(skipHeader) {
+        //     const allColumnIds = [];
+        //     gridOptions.columnApi.getAllColumns().forEach((column) => {
+        //         allColumnIds.push(column.getId());
+        //     });
+
+        //     gridOptions.columnApi.autoSizeColumns(allColumnIds, skipHeader);
+        // }
+
+        function viewjd(id) {
+            window.location.href = `./viewjd.html?${id}`;
+        }
+        function editjd(id) {
+            window.location.href = `./editrow.html?${id}`;
+        }
+
+        function onFilterTextBoxChanged() {
+            gridOptions.api.setQuickFilter(document.getElementById('filter-text-box').value);
+        }
+
+        // fetch the row data to use and one ready provide it to the Grid via the Grid API
+        var token = localStorage.getItem("Access_Token");
+        fetch('http://ec2-52-87-201-103.compute-1.amazonaws.com:5000/list_jd', {
+
+            headers: {
+                authorization: "Bearer " + token
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // console.log("DATA", data.data);
+                gridOptions.api.setRowData(data.data);
+            });
+    </script>
+</body>
+
+</html>

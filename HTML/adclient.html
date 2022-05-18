@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client</title>
+    <link rel="stylesheet" href="/CSS/adclient.css">
+    <link rel="stylesheet" href="/Icons/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/CSS/horizontalmenu.css">
+    <script src="/JavaScript/horizontalmenu.js"></script>
+    <link rel="stylesheet" href="/CSS/sidemenu.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper d-flex flex-direction-row">
+        <div id="sidemenu">
+        </div>
+
+        <div class="pagecontent d-flex flex-column">
+            <div id="horizontal" class="horizontal">
+            </div>
+
+            <div id="content" class="content">
+                <div class="container-fluid">
+                    <div class="row bg-light createjdrow py-2 pl-4">
+                        <div class="d-flex d-flex-row jobspage">
+                            <div class="d-flex align-items-center">
+                                <img src="/Images/jobs.png" class="jobimage mr-2">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h4 class="m-0">Jobs</h4>
+                                <div class="d-flex flex-row align-items-center">
+                                    <a href="/HTML/dashboard.html">
+                                        <small class="m-0 mr-2 redirecttojobs">Jobs</small>
+                                    </a>
+                                    <small class="m-0 mr-2">|</small>
+                                    <a href="/HTML/addjobs.html">
+                                        <small class="m-0 mr-2 redirecttojobs">Job Description</small>
+                                    </a>
+                                    <small class="m-0 mr-2">|</small>
+                                    <small class="m-0"><strong>Add Client</strong></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4 mx-2">
+                        <div class="col-lg-12 p-0">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="m-0">Add Client</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="cardbodycontent">
+
+                                        <form class="ml-4">
+                                            <div class="form-group d-flex flex-direction-row">
+                                                <input type="text" class="form-control mr-3" id="clientname"
+                                                    placeholder="Client Name">
+                                                <input type="text" class="form-control" id="clientcity"
+                                                    placeholder="City">
+                                            </div>
+                                            <div class="form-group d-flex flex-direction-row mt-2">
+                                                <input type="text" class="form-control mr-3" id="clientnum"
+                                                    placeholder="Contact Number">
+                                                <input type="text" class="form-control" id="clientext"
+                                                    placeholder="Ext">
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="awfield p-2" id="clientaddress" rows="5"
+                                                    placeholder="Address"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control awfield" id="clientwebsite"
+                                                    placeholder="Website">
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="my-3 d-flex flex-row justify-content-end">
+                                <button type="button" class="saveclient btn" onclick="saveclientinfo()">ADD
+                                    CLIENT</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        $(function () {
+            $("#sidemenu").load("sidemenu.html");
+            $("#horizontal").load("horizontalmenu.html");
+        });
+    </script>
+    <!-- main js file -->
+    <script src="/JavaScript/adclient.js"></script>
+
+</body>
+
+</html>
